@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+  <meta property="og:image" content="assets/images/preview.jpg">
+  <link rel="stylesheet" href="assets/css/main.min.css">
+</head>
+
+<body>
+  {{#unlesspage 'page404'}}
+  {{> header}}
+  {{/unlesspage}}
+  {{> body}}
+  {{#unlesspage 'page404'}}
+  {{> footer}}
+  {{> popshare}}
+  <script src="assets/js/main.min.js"></script>
+  {{> pswshare}}
+  {{/unlesspage}}
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "photoswipe",
+  "repository": "dimsemenov/PhotoSwipe",
+  "description": "JavaScript gallery",
+  "main": "dist/photoswipe.esm.js",
+  "version": "5.1.7",
+  "keywords": [
+    "gallery",
+    "lightbox",
+    "photo",
+    "image",
+    "touch",
+    "swipe",
+    "zoom"
+  ],
+  "scripts": [
+    "dist/photoswipe.esm.js",
+    "dist/photoswipe-lightbox.esm.js"
+  ],
+  "styles": [
+    "dist/photoswipe.css"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,64 @@
+// _config.scss
+
+// IMPORT BOOTSTRAP SECTION
+@import 'bootstrap';
+@import 'bootstrap-icons';
+
+// FONT SECTION
+$fontsize: 1rem;
+$lineheight: 1.5;
+$userfont: awcOpenSans, sans-serif;
+
+@mixin font($fname, $fstyle, $fweight, $furl) {
+  @font-face {
+    font-family: $fname;
+    font-style: $fstyle;
+    font-weight: $fweight;
+    font-display: swap;
+    src: url($furl) format('woff2');
+  }
+}
+
+@include font('awcOpenSans', normal, 300, '../fonts/open-sans-300.woff2');
+@include font('awcOpenSans', italic, 300, '../fonts/open-sans-300italic.woff2');
+@include font('awcOpenSans', normal, 400, '../fonts/open-sans-regular.woff2');
+@include font('awcOpenSans', italic, 400, '../fonts/open-sans-italic.woff2');
+@include font('awcOpenSans', normal, 700, '../fonts/open-sans-700.woff2');
+@include font('awcOpenSans', italic, 700, '../fonts/open-sans-700italic.woff2');
+
+// GENERAL PROJECT STYLES
+
+::placeholder {
+  color: $textcolor;
+}
+
+::selection {
+  background-color: rgba(mix(white, $accent, 60%), 0.4);
+  color: inherit;
+}
+
+input,
+textarea {
+  outline: none;
+
+  &:focus:required:invalid {
+    border-color: red;
+  }
+
+  &:required:valid {
+    border-color: green;
+  }
+}
+
+body {
+  font-family: $userfont;
+  font-size: $fontsize;
+  font-weight: normal;
+  line-height: $lineheight;
+  color: $textcolor;
+  background-color: #fff;
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 4rem; //64px
+}

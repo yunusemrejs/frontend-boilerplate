@@ -1,0 +1,26 @@
+{
+  "name": "PhotoSwipe",
+  "title": "Photoswipe",
+  "description": "",
+  "version": "5.1.7",
+  "homepage": "https://photoswipe.com",
+  "demo": "https://photoswipe.com",
+  "docs": "https://photoswipe.com",
+  "author": {
+    "name": "Dmytro Semenov",
+    "email": "diiiimaaaa@gmail.com",
+    "url": "https://dimsemenov.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimsemenov/PhotoSwipe.git"
+  },
+  "bugs": "https://github.com/dimsemenov/PhotoSwipe/issues",
+  "keywords": ["photoswipe","gallery","touch","mobile"],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://www.opensource.org/licenses/mit-license.php"
+    }
+  ]
+}
