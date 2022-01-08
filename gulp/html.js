@@ -16,7 +16,7 @@ export function html() {
       panini({
         root: baseDir + '/',
         layouts: baseDir + '/layouts/',
-        partials: baseDir + '/partials/',
+        partials: baseDir + '/includes/',
         helpers: baseDir + '/helpers/',
         data: baseDir + '/data/',
       })

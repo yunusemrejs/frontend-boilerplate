@@ -12,7 +12,7 @@ let paths = {
   purge: {
     content: [
       `${baseDir}/**/*.html`,
-      `${baseDir}/assets/js/**/*.js`,
+      `${baseDir}/assets/scripts/**/*.js`,
       `${baseDir}/assets/scss/blocks/_pswp.scss`,
       'node_modules/bootstrap/scss/_reboot.scss',
       'node_modules/bootstrap/js/dist/dom/*.js',
