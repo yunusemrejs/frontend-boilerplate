@@ -35,7 +35,6 @@ import gulp from 'gulp'
 const { src, dest } = gulp
 import sassDark from 'sass'
 import sassGulp from 'gulp-sass'
-import sourcemaps from 'gulp-sourcemaps'
 const sass = sassGulp(sassDark)
 import purgecss from 'gulp-purgecss'
 import postCss from 'gulp-postcss'
@@ -59,11 +58,9 @@ export function styles() {
       .pipe(rename(paths.cssOutputName))
       .pipe(dest(paths.styles.dest))
   } else {
-    return src(paths.styles.src)
-      .pipe(sourcemaps.init())
+    return src(paths.styles.src, { sourcemaps: true })
       .pipe(sass.sync().on('error', sass.logError))
       .pipe(rename(paths.cssOutputName))
-      .pipe(sourcemaps.write('.'))
-      .pipe(dest(paths.styles.dest))
+      .pipe(dest(paths.styles.dest, { sourcemaps: '.' }))
   }
 }
