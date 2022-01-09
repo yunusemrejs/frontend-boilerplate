@@ -23,15 +23,15 @@ function browserSync() {
     notify: false,
     server: { baseDir: distDir },
     online: true, // If «false» - Browsersync will work offline without internet connection
-    browser: ['firefox'], // open in firefox
+    browser: ['firefox'], // open in 'firefox', 'chrome', 'opera' or 'msedge'
   })
 }
 
 function watchDev() {
   watch(`./${baseDir}/**/*.{html,htm}`, { usePolling: true }, html)
-  watch(`./${baseDir}/assets/js/**/*.{js,mjs,cjs}`, { usePolling: true }, scripts)
+  watch(`./${baseDir}/assets/scripts/**/*.{js,mjs,cjs}`, { usePolling: true }, scripts)
   watch(`./${baseDir}/assets/scss/**/*.{scss,sass,css}`, { usePolling: true }, styles)
-  watch(`./${baseDir}/assets/img/**/*.{jpg,png,svg}`, { usePolling: true }, images)
+  watch(`./${baseDir}/assets/images/**/*.{jpg,png,svg}`, { usePolling: true }, images)
   watch(`./${distDir}/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browsersync.reload)
 }
 

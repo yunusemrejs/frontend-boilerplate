@@ -5,7 +5,7 @@ const baseDir = 'src' // Base directory path without «/» at the end
 const distDir = 'dist' // Distribution folder for uploading to the site
 let paths = {
   copy: {
-    src: [baseDir + '/assets/fonts/**/*', baseDir + '/assets/vendor/**/*'],
+    src: [baseDir + '/assets/fonts/**/*'],
     dest: distDir,
     base: baseDir,
   },

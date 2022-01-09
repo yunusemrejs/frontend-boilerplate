@@ -33,33 +33,39 @@ pageheader: HOME
       <!-- photoswipe gallery -->
       <div class="col-12">
         <h2 class="text-center">photoswipe 5 plagin gallery</h2>
-        <div class="gallery pswp-gallery">
-          <figure>
-            <a href="assets/images/b2.jpg" data-size="1920x1200" target="_blank" title='Townhouse "Silverine"'><img src="assets/images/thumb/b2-640x400.jpg" alt="Фото" /></a>
+        <ul class="d-flex list-unstyled justify-content-center gap-3">
+          <li id="all" class="d-inline-block"><a href="all">all</a></li>
+          <li id="foo" class="d-inline-block"><a href="foo">foo</a></li>
+          <li id="bar" class="d-inline-block"><a href="bar">bar</a></li>
+          <li id="baz" class="d-inline-block"><a href="baz">baz</a></li>
+        </ul>
+        <div id="gallery-grid" class="gallery pswp-gallery">
+          <figure data-groups='["foo"]' class="gallery-item">
+            <a href="assets/images/b2.jpg" data-size="1920x1200" target="_blank" title='Townhouse "Silverine"'><img src="assets/images/thumb/b2-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Townhouse "Silverine"</figcaption>
           </figure>
-          <figure>
-            <a href="assets/images/b3.jpg" data-size="1920x1200" target="_blank" title='Residential Complex "Нousewarming"'><img src="assets/images/thumb/b3-640x400.jpg" alt="Фото" /></a>
+          <figure data-groups='["baz"]' class="gallery-item">
+            <a href="assets/images/b3.jpg" data-size="1920x1200" target="_blank" title='Residential Complex "Нousewarming"'><img src="assets/images/thumb/b3-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Residential Complex "Нousewarming"</figcaption>
           </figure>
-          <figure>
-            <a href="assets/images/b4.jpg" data-size="1920x1200" target="_blank" title='Residential Complex "Soul lift"'><img src="assets/images/thumb/b4-640x400.jpg" alt="Фото" /></a>
+          <figure data-groups='["foo"]' class="gallery-item">
+            <a href="assets/images/b4.jpg" data-size="1920x1200" target="_blank" title='Residential Complex "Soul lift"'><img src="assets/images/thumb/b4-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Residential Complex "Soul lift"</figcaption>
           </figure>
-          <figure>
-            <a href="assets/images/b1.jpg" data-size="1920x1200" target="_blank" title="Cottage 250 m2"><img src="assets/images/thumb/b1-640x400.jpg" alt="Фото" /></a>
+          <figure data-groups='["bar"]' class="gallery-item">
+            <a href="assets/images/b1.jpg" data-size="1920x1200" target="_blank" title="Cottage 250 m2"><img src="assets/images/thumb/b1-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Cottage 250 m2</figcaption>
           </figure>
-          <figure>
-            <a href="assets/images/b5.jpg" data-size="1920x1200" target="_blank" title="Typical American Single Family Cottage"><img src="assets/images/thumb/b5-640x400.jpg" alt="Фото" /></a>
+          <figure data-groups='["baz"]' class="gallery-item">
+            <a href="assets/images/b5.jpg" data-size="1920x1200" target="_blank" title="Typical American Single Family Cottage"><img src="assets/images/thumb/b5-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Typical American Single Family Cottage</figcaption>
           </figure>
-          <figure>
-            <a href="assets/images/b6.jpg" data-size="1920x1200" target="_blank" title="European house 350 m2"><img src="assets/images/thumb/b6-640x400.jpg" alt="Фото" /></a>
+          <figure data-groups='["bar"]' class="gallery-item">
+            <a href="assets/images/b6.jpg" data-size="1920x1200" target="_blank" title="European house 350 m2"><img src="assets/images/thumb/b6-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">European house 350 m2</figcaption>
           </figure>
-          <figure>
-            <a href="assets/images/b7.jpg" data-size="1920x1200" target="_blank" title="Modern Cottage"><img src="assets/images/thumb/b7-640x400.jpg" alt="Фото" /></a>
+          <figure data-groups='["foo"]' class="gallery-item">
+            <a href="assets/images/b7.jpg" data-size="1920x1200" target="_blank" title="Modern Cottage"><img src="assets/images/thumb/b7-640x400.jpg" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Modern Cottage</figcaption>
           </figure>
         </div>
