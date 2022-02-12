@@ -1,25 +1,40 @@
-// html.mjs
+// html.js
 
-// VARIABLES & PATHS
+// variables & path
 const baseDir = 'src' // Base directory path without «/» at the end
 const distDir = 'dist' // Distribution folder for uploading to the site
+let html = ()=>{}
 
-// LOGIC
+// import modules
+import { env } from 'process'
 import gulp from 'gulp'
-const { src, dest } = gulp
-import panini from 'panini'
+const { src, dest, series } = gulp
+import nunjucks from 'gulp-nunjucks'
+import prettier from 'gulp-prettier'
+import minify from 'gulp-htmlmin'
+import chalk from 'chalk'
 
-export function html() {
-  panini.refresh()
-  return src(baseDir + '/*.html', { base: baseDir + '/' })
-    .pipe(
-      panini({
-        root: baseDir + '/',
-        layouts: baseDir + '/layouts/',
-        partials: baseDir + '/includes/',
-        helpers: baseDir + '/helpers/',
-        data: baseDir + '/data/',
-      })
-    )
+// html assembly task
+function assemble() {
+  console.log(env.BUILD === 'production' ? chalk.green('Nunjuks running OK!'):chalk.magenta('Nunjuks running OK!'))
+  return src(baseDir +'/*.{html,htm,njk}', { base: baseDir + '/' })
+    .pipe(nunjucks.compile().on('Error', function(error){ console.log(error) }))
+    .pipe(prettier({ parser: "html" }))
     .pipe(dest(distDir + '/'))
 }
+
+// html minify task
+function htmlmin() {
+  console.log(chalk.green('HTML minify running OK!'))
+  return src(distDir + '/*.html', { base: baseDir + '/' })
+    .pipe(minify({ removeComments: true, collapseWhitespace: true }))
+    .pipe(dest(distDir + '/'))
+}
+
+if (env.BUILD === 'production') {
+  html = series( assemble, htmlmin)
+} else {
+  html = assemble
+}
+
+export { html, htmlmin}

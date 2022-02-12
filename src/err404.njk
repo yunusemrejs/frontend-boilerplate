@@ -1,7 +1,9 @@
----
-layout: default
-title: Mockup | 404
----
+{# er404.njk #}
+{% extends "layouts/default.njk" %}
+{% set title = "404" %}
+{% set pageheader = "Error 404" %}
+{# ••• #}
+{% block main %}
 <div class="blank-wrapper container-md">
   <div class="row justify-content-center align-content-center h-100">
     <section class="col-8 col-md-6 py-5">
@@ -11,3 +13,4 @@ title: Mockup | 404
     </section>
   </div>
 </div>
+{% endblock %}

@@ -1,42 +1,52 @@
 // gulpfile.js
 
-// VARIABLES & PATHS
+// variables & path
 const baseDir = 'src' // Base directory path without «/» at the end
 const distDir = 'dist' // Distribution folder for uploading to the site
-const fileswatch = 'html,htm,php,txt,js,mjs,scss,sass,css,jpg,png,svg,json,md' // List of files extensions for watching & hard reload
+const fileswatch = 'html,htm,css,php,txt,js,cjs,mjs,webp,jpg,png,svg,json,md,woff2'
 
-// LOGIC
+// import modules
 import gulp from 'gulp'
 const { parallel, series, watch } = gulp
 import browsersync from 'browser-sync'
-import { html } from './gulp/html.js'
+import { html, htmlmin } from './gulp/html.js'
 import { deploy } from './gulp/deploy.js'
 import { images } from './gulp/images.js'
 import { styles } from './gulp/styles.js'
 import { scripts } from './gulp/scripts.js'
 import { clean, assetscopy } from './gulp/assets.js'
 
+//  server reload task
 function browserSync() {
   browsersync.init({
-    files: [baseDir + '/**/*', distDir + '/**/*'],
+    files: [distDir + '/**/*'],
     watch: true,
     notify: false,
     server: { baseDir: distDir },
-    online: true, // If «false» - Browsersync will work offline without internet connection
-    browser: ['firefox'], // open in 'firefox', 'chrome', 'opera' or 'msedge'
+    online: true,
+    browser: ['firefox'], // or 'chrome', 'msedge', 'opera'
+    callbacks: {
+      ready: function(err, bs) {
+        // adding a middleware of the stack after Browsersync is running
+        bs.addMiddleware("*", function (req, res) {
+          res.writeHead(302, { location: "err404.html" })
+          res.end("Redirecting!")
+        })
+      }
+    },
   })
 }
 
-function watchDev() {
-  watch(`./${baseDir}/**/*.{html,htm}`, { usePolling: true }, html)
+function watchstart() {
+  watch(`./${baseDir}/**/*.{html,htm,njk}`, { usePolling: true }, html)
   watch(`./${baseDir}/assets/scripts/**/*.{js,mjs,cjs}`, { usePolling: true }, scripts)
-  watch(`./${baseDir}/assets/scss/**/*.{scss,sass,css}`, { usePolling: true }, styles)
-  watch(`./${baseDir}/assets/images/**/*.{jpg,png,svg}`, { usePolling: true }, images)
+  watch(`./${baseDir}/assets/sass/**/*.{scss,sass,css,pcss}`, { usePolling: true }, styles)
+  watch(`./${baseDir}/assets/images/**/*.{webp,jpg,png,svg}`, { usePolling: true }, images)
   watch(`./${distDir}/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browsersync.reload)
 }
 
-export { html, clean, assetscopy, styles, scripts, images, deploy }
-export let assets = series(html, assetscopy, images, styles, scripts)
-export let serve = parallel(browserSync, watchDev)
-export let dev = series(clean, assets, serve)
-export let build = series(clean, assets)
+export { html, htmlmin, clean, assetscopy, styles, scripts, images, deploy }
+export let assets = series(html, assetscopy, styles, scripts)
+export let serve = parallel(browserSync, watchstart)
+export let dev = series(clean, images, assets, serve)
+export let build = series(clean, images, assets)

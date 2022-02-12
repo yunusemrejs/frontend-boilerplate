@@ -1,16 +1,16 @@
----
-layout: default
-title: Mockup | Home
-pageheader: HOME
----
-
+{# index.njk #}
+{% extends "layouts/default.njk" %}
+{% set title = "Home" %}
+{% set pageheader = "Mockup Template" %}
+{# ••• #}
+{% block main %}
 <main class="container-md blur">
 
   <div class="row mb-5">
-    <!-- main content -->
+    {# main content #}
     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
       <figure class="pswp-one-image w-100 h-100 m-0 figure-hover">
-        <a href="assets/images/preview.jpg" data-size="1280x853" data-cropped="true" target="_blank"><img class="of-cover" src="assets/images/preview.jpg" alt="Starter Template - Saint Petersburg" /></a>
+        <a href="assets/images/preview.webp" data-size="1280x853" data-cropped="true" target="_blank"><img class="of-cover" src="assets/images/preview.webp" alt="Starter Template - Saint Petersburg" /></a>
       </figure>
     </div>
 
@@ -30,7 +30,7 @@ pageheader: HOME
 
   <div class="row">
     <section class="col-sm-12">
-      <!-- photoswipe gallery -->
+      {# photoswipe gallery #}
       <div class="col-12">
         <h2 class="text-center">photoswipe 5 plagin gallery</h2>
         <ul class="d-flex list-unstyled justify-content-center gap-3">
@@ -41,31 +41,31 @@ pageheader: HOME
         </ul>
         <div id="gallery-grid" class="gallery pswp-gallery">
           <figure data-groups='["foo"]' class="gallery-item">
-            <a href="assets/images/b2.jpg" data-size="1920x1200" target="_blank" title='Townhouse "Silverine"'><img src="assets/images/thumb/b2-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b2.webp" data-size="1920x1200" target="_blank" title='Townhouse "Silverine"'><img src="assets/images/thumb/b2-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Townhouse "Silverine"</figcaption>
           </figure>
           <figure data-groups='["baz"]' class="gallery-item">
-            <a href="assets/images/b3.jpg" data-size="1920x1200" target="_blank" title='Residential Complex "Нousewarming"'><img src="assets/images/thumb/b3-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b3.webp" data-size="1920x1200" target="_blank" title='Residential Complex "Нousewarming"'><img src="assets/images/thumb/b3-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Residential Complex "Нousewarming"</figcaption>
           </figure>
           <figure data-groups='["foo"]' class="gallery-item">
-            <a href="assets/images/b4.jpg" data-size="1920x1200" target="_blank" title='Residential Complex "Soul lift"'><img src="assets/images/thumb/b4-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b4.webp" data-size="1920x1200" target="_blank" title='Residential Complex "Soul lift"'><img src="assets/images/thumb/b4-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Residential Complex "Soul lift"</figcaption>
           </figure>
           <figure data-groups='["bar"]' class="gallery-item">
-            <a href="assets/images/b1.jpg" data-size="1920x1200" target="_blank" title="Cottage 250 m2"><img src="assets/images/thumb/b1-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b1.webp" data-size="1920x1200" target="_blank" title="Cottage 250 m2"><img src="assets/images/thumb/b1-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Cottage 250 m2</figcaption>
           </figure>
           <figure data-groups='["baz"]' class="gallery-item">
-            <a href="assets/images/b5.jpg" data-size="1920x1200" target="_blank" title="Typical American Single Family Cottage"><img src="assets/images/thumb/b5-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b5.webp" data-size="1920x1200" target="_blank" title="Typical American Single Family Cottage"><img src="assets/images/thumb/b5-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Typical American Single Family Cottage</figcaption>
           </figure>
           <figure data-groups='["bar"]' class="gallery-item">
-            <a href="assets/images/b6.jpg" data-size="1920x1200" target="_blank" title="European house 350 m2"><img src="assets/images/thumb/b6-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b6.webp" data-size="1920x1200" target="_blank" title="European house 350 m2"><img src="assets/images/thumb/b6-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">European house 350 m2</figcaption>
           </figure>
           <figure data-groups='["foo"]' class="gallery-item">
-            <a href="assets/images/b7.jpg" data-size="1920x1200" target="_blank" title="Modern Cottage"><img src="assets/images/thumb/b7-640x400.jpg" width="640" height="400" alt="Фото" /></a>
+            <a href="assets/images/b7.webp" data-size="1920x1200" target="_blank" title="Modern Cottage"><img src="assets/images/thumb/b7-640x400.webp" width="640" height="400" alt="Фото" /></a>
             <figcaption class="visually-hidden">Modern Cottage</figcaption>
           </figure>
         </div>
@@ -89,3 +89,5 @@ pageheader: HOME
   </div>
 
 </main>
+{% endblock %}
+{# end index.njk #}

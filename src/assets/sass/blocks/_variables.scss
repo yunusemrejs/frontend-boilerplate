@@ -1,0 +1,53 @@
+// _variables.scss
+// user and bootstrap variables
+
+$accent:        #f58220; // акцентный цвет для выделения
+$textcolor:     #6C757D; // основной цвет текста gray-600
+$darkcolor:     #212529; // основной темный цвет gray-900
+
+// Prefix for :root CSS variables
+$variable-prefix:  awc-;
+
+// Settings for the `<body>` element.
+$body-bg:           #fff;
+$body-color:        $textcolor;
+$body-text-align:   left;
+
+$font-family-base:  awcOpenSans, sans-serif;
+$font-size-base:    1.125rem; // Основной размер шрифта: 16 * 1.125 = 18px
+$line-height-base:  1.3333; // 18px * 1.3333 = 24px Document Line Height
+
+// Headings
+$headings-font-weight:  700;
+$headings-color:        $darkcolor;
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 1.5rem; //24px
+$gutter: $grid-gutter-width;
+$spacer: $grid-gutter-width;
+
+// Grig - частично данные согласованы с tailwind ... https://tailwindcss.com/docs/breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1536px,
+);
+$container-max-widths: (
+  sm: 600px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+  xxl: 1440px,
+);
+
+// Ratio
+$aspect-ratios: (
+  '1x1': 100%,
+  '4x3': calc(3 / 4 * 100%),
+  '16x9': calc(9 / 16 * 100%),
+  '16x10': calc(10 / 16 * 100%),
+  '21x9': calc(9 / 21 * 100%),
+);

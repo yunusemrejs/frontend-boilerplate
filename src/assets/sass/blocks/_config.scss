@@ -1,0 +1,41 @@
+// _config.scss
+// GENERAL PROJECT STYLES
+
+::placeholder {
+  color: $textcolor;
+}
+
+::selection {
+  background-color: rgba(mix(white, $accent, 60%), 0.4);
+  color: inherit;
+}
+
+input,
+textarea {
+  outline: none;
+
+  &:focus:required:invalid {
+    border-color: red;
+  }
+
+  &:required:valid {
+    border-color: green;
+  }
+}
+
+body {
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 4rem; //64px
+}
+
+a, a>h3 {
+  color: $darkcolor;
+  transition: 0.25s;
+
+  &:hover,
+  &:hover>h3 {
+    color: $accent;
+  }
+}

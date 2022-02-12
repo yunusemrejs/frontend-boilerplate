@@ -10,7 +10,10 @@ let paths = {
     base: baseDir,
   },
   del: {
-    src: [distDir + '/assets/*', `!${distDir}/assets/images`],
+    src: [
+      distDir,
+      // '!' + distDir + '/assets/images/**/*.{webp,svg}',
+    ],
   },
 }
 

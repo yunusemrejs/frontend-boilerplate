@@ -1,5 +1,6 @@
-// VARIABLES & PATHS
+// deploy.js
 
+// variables & path
 const paths = {
   deploy: {
     hostname: 'host.ru', // Deploy hostname
@@ -22,11 +23,12 @@ const paths = {
   },
 }
 
-// LOGIC
+// import modules
 import gulp from 'gulp'
 const { src, dest, parallel, series, watch } = gulp
 import rsync from 'gulp-rsync'
 
+// define & export task for production
 export function deploy() {
   return src('./').pipe(
     rsync({

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="assets/images/favicon.webp" type="image/webp" />
+    <meta property="og:image" content="assets/images/preview.webp">
+    <link rel="preload" as="style" href="assets/css/fonts.min.css" />
+    <link rel="stylesheet" href="assets/css/fonts.min.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="assets/css/main.min.css"/>
+    <title>Mockup • {{ title }}</title>
+  </head>
+  <body>
+    {% if title !== '404' %}
+    {# -- header -- #}
+    {% include "includes/header.njk" %}
+    {% endif %}
+    {# -- main -- #}
+    {% block main %}
+      This is the default main content
+    {% endblock %}
+    {% if title !== '404' %}
+    {# -- footer -- #}
+    {% include "includes/footer.njk" %}
+    {% include "includes/popshare.njk" %}
+    <script src="assets/js/main.min.js"></script>
+    {% include "includes/pswshare.njk" %}
+    {% endif %}
+  </body>
+</html>

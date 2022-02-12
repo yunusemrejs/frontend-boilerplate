@@ -1,23 +1,5 @@
 // home.scss
 
-h1,
-h2,
-h3 {
-  font-weight: 700;
-  color: $dark;
-  transition: 0.25s;
-}
-
-a {
-  color: $dark;
-  transition: 0.25s;
-
-  &:hover,
-  &:hover h3 {
-    color: $accent;
-  }
-}
-
 .nav-autohide {
   min-height: 4rem;
   transition: transform 0.5s;
@@ -63,43 +45,38 @@ img {
 .gallery {
   margin: $gutter 0;
   padding: $gutter 0;
+}
+.gallery-item {
+  display: inline-block;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  width: 100%;
+  height: auto;
+  padding: 0.25rem;
+  margin: 0 0 $gutter * 0.5 0;
+  border-radius: 0.25rem;
+  border: 1px solid $gray-300;
+  box-shadow: none;
+  filter: brightness(0.9);
+  transition-property: transform, opacity, filter, box-shadow !important;
 
-  .gallery-item {
-    display: block;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    width: 100%;
-    height: auto;
-    padding: 0.25rem;
-    margin-bottom: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid $gray-300;
-    box-shadow: none;
-    filter: brightness(0.9);
-    transition-property: transform, opacity, filter, box-shadow !important;
-
-    &:hover {
-      filter: brightness(1);
-      box-shadow: 0 0 8px rgba(#000, 0.25);
-    }
+  &:hover {
+    filter: brightness(1);
+    box-shadow: 0 0 8px rgba(#000, 0.25);
   }
-
-  @include media-breakpoint-up(sm) {
-    margin: $gutter -0.5rem;
-    .gallery-item {
-      margin: 0.5rem;
-      width: calc(50% - 1rem);
-    };
+  @media (min-width: 460px) {
+    width: calc(50% - $gutter * 0.5);
+    margin-left: $gutter * 0.25;
+    margin-right: $gutter * 0.25;
   }
   @include media-breakpoint-up(md) {
-    .gallery-item {
-      width: calc(33.33% - 1rem);
-    };
+    width: calc(33.33% - $gutter * 0.5);
   }
   @include media-breakpoint-up(lg) {
-    .gallery-item {
-      width: calc(25% - 1rem);
-    };
+    width: calc(25% - $gutter * 0.5);
+  }
+  @include media-breakpoint-up(xl) {
+    width: calc(100%/7 - $gutter * 0.5);
   }
 }
 

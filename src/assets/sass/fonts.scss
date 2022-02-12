@@ -1,0 +1,19 @@
+// fonts.scss
+
+// FONTS LOAD SECTION  // font-display: swap // Uncomment to initially display system fonts
+@mixin font($fname, $fstyle, $fweight, $furl) {
+  @font-face {
+    font-display: swap;
+    font-family: $fname;
+    font-style: $fstyle;
+    font-weight: $fweight;
+    src: url($furl) format('woff2');
+  }
+}
+
+@include font('awcOpenSans', normal, 300, '../fonts/open-sans-300.woff2');
+@include font('awcOpenSans', italic, 300, '../fonts/open-sans-300italic.woff2');
+@include font('awcOpenSans', normal, 400, '../fonts/open-sans-regular.woff2');
+@include font('awcOpenSans', italic, 400, '../fonts/open-sans-italic.woff2');
+@include font('awcOpenSans', normal, 700, '../fonts/open-sans-700.woff2');
+@include font('awcOpenSans', italic, 700, '../fonts/open-sans-700italic.woff2');

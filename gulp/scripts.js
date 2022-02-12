@@ -1,6 +1,6 @@
-// js.mjs
+// scripts.js
 
-// VARIABLES & PATHS
+// variables & path
 const baseDir = 'src' // Base directory path without «/» at the end
 const distDir = 'dist' // Distribution folder for uploading to the site
 let paths = {
@@ -15,8 +15,9 @@ import { babel } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
+import chalk from 'chalk'
 
-
+// task
 export async function scripts() {
   const bundle = await rollup({
     input: paths.src,
@@ -30,4 +31,10 @@ export async function scripts() {
     sourcemap: env.BUILD === 'production' ? false : true,
     plugins: env.BUILD === 'production' ? [terser({compress: {passes: 2}, format: {comments: false}})] : false,
   })
+
+  if (env.BUILD === 'production') {
+    console.log(chalk.green('JS build for production is completed OK!'))
+  } else {
+    console.log(chalk.magenta('Script developments is running OK!'))
+  }
 }

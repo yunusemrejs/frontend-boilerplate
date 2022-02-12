@@ -1,8 +1,9 @@
----
-layout: default
-title: Mockup | Contacts
-pageheader: CONTACTS
----
+{# contacts.njk #}
+{% extends "layouts/default.njk" %}
+{% set title = "Contacts" %}
+{% set pageheader = "CONTACTS" %}
+{# ••• #}
+{% block main %}
 <div class="container-md">
   <div class="row row-cols-2 py-5">
     <div class="col-3 col-lg-4 text-end">
@@ -25,4 +26,5 @@ pageheader: CONTACTS
     </div>
   </div>
 </div>
-</div>
+{% endblock %}
+{# end contacts.njk #}
