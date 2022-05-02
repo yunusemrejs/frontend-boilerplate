@@ -2,8 +2,8 @@
 // open image gallery with share button
 'use strict'
 
-import PhotoSwipeLightbox from 'photoswipe/dist/photoswipe-lightbox.esm.js'
-import PhotoSwipe from 'photoswipe/dist/photoswipe.esm.js'
+import PhotoSwipe from 'photoswipe'
+import PhotoSwipeLightbox from 'photoswipe/lightbox'
 
 const leftArrowSVGString =
   '<svg aria-hidden="true" class="pswp__icn" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 28 10 16 22 4" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -14,14 +14,14 @@ const zoomSVGstring =
 const shareSVGstring =
   '<svg aria-hidden="true" class="pswp__icn" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 16.137c-.76 0-1.44.3-1.96.773l-7.13-4.167A3.3 3.3 0 0 0 9 12.04a3.3 3.3 0 0 0-.09-.703l7.05-4.126a2.98 2.98 0 0 0 2.04.813c1.66 0 3-1.345 3-3.012A3.002 3.002 0 0 0 18 2c-1.66 0-3 1.345-3 3.012 0 .241.04.472.09.703L8.04 9.84A2.98 2.98 0 0 0 6 9.028c-1.66 0-3 1.345-3 3.012a3.002 3.002 0 0 0 3 3.012c.79 0 1.5-.311 2.04-.813l7.12 4.177c-.05.21-.08.431-.08.652A2.93 2.93 0 0 0 18 22a2.93 2.93 0 0 0 2.92-2.932A2.93 2.93 0 0 0 18 16.137Z" fill="#fff"/></svg>'
 
-const thisoptions = {
+const config = {
   arrowPrevSVG: leftArrowSVGString,
   arrowNextSVG: leftArrowSVGString,
   closeSVG: closeSVGstring,
   zoomSVG: zoomSVGstring,
   bgOpacity: 0.92, // set background opacity
   gallerySelector: '.pswp-gallery',
-  childSelector: 'figure a',
+  childSelector: 'a',
   paddingFn: (viewportSize) => {
     return {
       top: viewportSize.x < 1024 ? 0 : 48,
@@ -33,42 +33,8 @@ const thisoptions = {
   allowMouseDrag: true,
   pswpModule: PhotoSwipe,
 }
-const lightbox = new PhotoSwipeLightbox(thisoptions)
 
-lightbox.on('itemData', (e) => {
-  // use new attribute for image size: data-size="1920x1200"
-  const { itemData } = e
-  const { element } = itemData // element is children
-  itemData.src = element.href
-  const sizeAttr = element.dataset.size // data-size
-  itemData.w = Number(sizeAttr.split('x')[0])
-  itemData.h = Number(sizeAttr.split('x')[1])
-  itemData.thumbCropped = true
-})
-// insert share button into bar
-lightbox.on('uiRegister', function () {
-  lightbox.pswp.ui.registerElement({
-    name: 'share',
-    order: 9,
-    isButton: true,
-    title: 'Share',
-    html: shareSVGstring,
-    onClick: (event, el) => {
-      const sharelist = document.querySelector('.share-button-list')
-      if (sharelist == null) {
-        const sharelist = openPopupShareButton(el)
-        const addr = el.baseURI // current page url
-        const curl = lightbox.pswp.currSlide.data.src // current slide image url
-        setShareLink(sharelist, addr, curl) // add new link to href
-        setShareLinkListen(sharelist) // replase default click as to new window open
-        buttonClickListen(lightbox.pswp, sharelist)
-      } else {
-        sharelist.remove()
-      }
-    },
-  })
-})
-lightbox.init()
+const lightbox = new PhotoSwipeLightbox(config)
 
 // open popup share button into bar
 function openPopupShareButton(el) {
@@ -93,6 +59,69 @@ function buttonClickListen(pswp, sharelist) {
     }
   }
 }
+
+// use new attribute for image size: data-size="1920x1200"
+lightbox.on('itemData', (e) => {
+  const { itemData } = e
+  const { element } = itemData // element is children
+  itemData.src = element.href
+  const sizeAttr = element.dataset.size // data-size
+  itemData.w = Number(sizeAttr.split('x')[0])
+  itemData.h = Number(sizeAttr.split('x')[1])
+  itemData.thumbCropped = true
+})
+
+// insert share button into bar
+lightbox.on('uiRegister', function () {
+  lightbox.pswp.ui.registerElement({
+    name: 'share',
+    order: 9,
+    isButton: true,
+    title: 'Share',
+    html: shareSVGstring,
+    onClick: (event, el) => {
+      const sharelist = document.querySelector('.share-button-list')
+      if (sharelist == null) {
+        const sharelist = openPopupShareButton(el)
+        const addr = el.baseURI // current page url
+        const curl = lightbox.pswp.currSlide.data.src // current slide image url
+        setShareLink(sharelist, addr, curl) // add new link to href
+        setShareLinkListen(sharelist) // replase default click as to new window open
+        buttonClickListen(lightbox.pswp, sharelist)
+      } else {
+        sharelist.remove()
+      }
+    },
+  })
+})
+
+// caption
+lightbox.on('uiRegister', function () {
+  lightbox.pswp.ui.registerElement({
+    name: 'custom-caption',
+    order: 9,
+    isButton: false,
+    appendTo: 'root',
+    html: 'Caption text',
+    onInit: (el, pswp) => {
+      lightbox.pswp.on('change', () => {
+        const currSlideElement = lightbox.pswp.currSlide.data.element
+        let captionHTML = ''
+        if (currSlideElement) {
+          // получить заголовок из атрибута alt ...
+          // captionHTML = currSlideElement.querySelector('img').getAttribute('alt')
+          // получить заголовок из атрибута data-capt ...
+          captionHTML = currSlideElement.querySelector('img').dataset.capt
+        }
+        el.innerHTML = captionHTML || ''
+      })
+    },
+  })
+})
+
+lightbox.init()
+// ------------------------------------------------------------
+
 
 // ------------------------------------------------------------
 // add to anchors new possibility to open share window
