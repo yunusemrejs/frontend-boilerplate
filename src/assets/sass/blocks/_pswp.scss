@@ -3,6 +3,7 @@
 .pswp {
   --pswp-bg: #000;
   --pswp-placeholder-bg: #222;
+  --pswp__top-bar-bg: linear-gradient(0deg,transparent 0,rgba(0,0,0,.006) 8.1%,rgba(0,0,0,.021) 15.5%,rgba(0,0,0,.046) 22.5%,rgba(0,0,0,.077) 29%,rgba(0,0,0,.114) 35.3%,rgba(0,0,0,.155) 41.2%,rgba(0,0,0,.198) 47.1%,rgba(0,0,0,.242) 52.9%,rgba(0,0,0,.285) 58.8%,rgba(0,0,0,.326) 64.7%,rgba(0,0,0,.363) 71%,rgba(0,0,0,.394) 77.5%,rgba(0,0,0,.419) 84.5%,rgba(0,0,0,.434) 91.9%,rgba(0,0,0,.44));
   --pswp-error-text-color: #f7f7f7;
   --pswp-root-z-index: 100000;
   --pswp-preloader-color: rgba(79, 79, 79, 0.4);
@@ -13,8 +14,9 @@
   --pswp-transition-duration: 333ms; */
 
   --pswp-icon-color: #fff;
-  --pswp-icon-shadow: drop-shadow(0px -2px 8px rgba(0, 0, 0, 0.15)) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.25))
-    drop-shadow(0px 4px 18px rgba(0, 0, 0, 0.3));
+  --pswp-icon-shadow: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+  // --pswp-icon-shadow: drop-shadow(0px -2px 8px rgba(0, 0, 0, 0.15)) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.25))
+  //   drop-shadow(0px 4px 18px rgba(0, 0, 0, 0.3));
   --pswp-icon-color-secondary: #4f4f4f;
   --pswp-icon-stroke-color: #4f4f4f;
   --pswp-icon-stroke-width: 2px;
@@ -192,7 +194,7 @@ and show (for example fade in) when PhotoSwipe is opened
   background: none;
   border: 0;
   box-shadow: none;
-  opacity: 0.65;
+  opacity: 1;
   transition: 0.25s opacity;
   -webkit-appearance: none;
   -webkit-touch-callout: none;
@@ -205,7 +207,7 @@ and show (for example fade in) when PhotoSwipe is opened
   background: none;
   border: 0;
   box-shadow: none;
-  opacity: 1;
+  opacity: 0.65;
 }
 
 .pswp__button:disabled {
@@ -257,6 +259,7 @@ div.pswp__img--placeholder,
   flex-direction: row;
   justify-content: flex-end;
   z-index: 10;
+  background-image: var(--pswp__top-bar-bg);
 
   /* allow events to pass through top bar itself */
   pointer-events: none !important;
@@ -466,7 +469,7 @@ div.pswp__img--placeholder,
   height: 3rem;
   font-size: 1.5rem;
   color: #fff;
-  opacity: 0.65;
+  opacity: 1;
   transition: 0.4s;
 
   a {
@@ -483,7 +486,7 @@ div.pswp__img--placeholder,
   }
 
   &:hover {
-    opacity: 1;
+    opacity: 0.65;
   }
 }
 

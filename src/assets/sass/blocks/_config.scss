@@ -1,13 +1,23 @@
 // _config.scss
 // GENERAL PROJECT STYLES
 
+body {
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+}
+
 ::placeholder {
   color: $textcolor;
 }
 
 ::selection {
   background-color: rgba(mix(white, $accent, 60%), 0.4);
-  color: inherit;
+  color: white;
+}
+
+:focus-visible {
+    outline: 2px dotted $accent;
 }
 
 input,
@@ -23,19 +33,10 @@ textarea {
   }
 }
 
-body {
-  min-width: 320px;
-  position: relative;
-  overflow-x: hidden;
-  padding-top: 4rem; //64px
-}
 
-a, a>h3 {
-  color: $darkcolor;
-  transition: 0.25s;
-
-  &:hover,
-  &:hover>h3 {
-    color: $accent;
-  }
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
