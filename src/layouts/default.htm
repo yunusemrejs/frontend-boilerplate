@@ -14,19 +14,21 @@
 
 	<body>
 		{% if title !== '404' %}
-			{# -- header -- #}
-			{% include "includes/header.njk" %}
-		{% endif %}
-		{# -- main -- #}
-		{% block main %}
+    <div class="grid">
+      {# -- header -- #}
+			{% include "includes/header.htm" %}
+      {% endif %}
+      {# -- main -- #}
+      {% block main %}
 			This is the default main content
-		{% endblock %}
-		{% if title !== '404' %}
+      {% endblock %}
+      {% if title !== '404' %}
 			{# -- footer -- #}
-			{% include "includes/footer.njk" %}
-			{% include "includes/popshare.njk" %}
+			{% include "includes/footer.htm" %}
+    </div>
+			{% include "includes/popshare.htm" %}
 			<script src="assets/js/main.min.js"></script>
-			{% include "includes/pswshare.njk" %}
+			{% include "includes/pswshare.htm" %}
 		{% endif %}
 	</body>
 
