@@ -5,7 +5,7 @@ const baseDir = 'src' // Base directory path without «/» at the end
 const distDir = 'dist' // Distribution folder for uploading to the site
 const fileswatch = 'html,htm,css,php,txt,js,cjs,mjs,webp,jpg,png,svg,json,md,woff2'
 
-// import modules
+// import modules & requires
 import gulp from 'gulp'
 const { parallel, series, watch } = gulp
 import browsersync from 'browser-sync'
@@ -37,6 +37,7 @@ function browserSync() {
   })
 }
 
+// watch task
 function watchstart() {
   watch(`./${baseDir}/**/*.{html,htm,njk}`, { usePolling: true }, html)
   watch(`./${baseDir}/assets/scripts/**/*.{js,mjs,cjs}`, { usePolling: true }, scripts)
@@ -45,6 +46,7 @@ function watchstart() {
   watch(`./${distDir}/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browsersync.reload)
 }
 
+// export
 export { html, htmlmin, clean, assetscopy, styles, scripts, images, deploy }
 export let assets = series(html, assetscopy, styles, scripts)
 export let serve = parallel(browserSync, watchstart)

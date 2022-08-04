@@ -1,6 +1,6 @@
 // assets.mjs
 
-// VARIABLES & PATHS
+// variables & paths
 const baseDir = 'src' // Base directory path without «/» at the end
 const distDir = 'dist' // Distribution folder for uploading to the site
 let paths = {
@@ -8,6 +8,10 @@ let paths = {
     src: [baseDir + '/assets/fonts/**/*'],
     dest: distDir,
     base: baseDir,
+  },
+  bif: {
+    src: baseDir + '/assets/vendor/bootstrap-icons/font/fonts/**/*',
+    dest: distDir + '/assets/fonts/bootstrap-icons',
   },
   del: {
     src: [
@@ -17,15 +21,22 @@ let paths = {
   },
 }
 
-// LOGIC
+// require
 import gulp from 'gulp'
-const { src, dest } = gulp
-import del from 'del'
+const { src, dest, parallel, series, watch } = gulp
+import { deleteAsync as del } from 'del'
 
-export function assetscopy() {
+// tasks
+function assets() {
   return src(paths.copy.src, { base: paths.copy.base }).pipe(dest(paths.copy.dest))
 }
-
-export function clean() {
+function bifcopy() {
+  return src(paths.bif.src).pipe(dest(paths.bif.dest))
+}
+function clean() {
   return del(paths.del.src, { force: true })
 }
+
+// export
+let assetscopy = series(assets, bifcopy)
+export { assetscopy, clean }
